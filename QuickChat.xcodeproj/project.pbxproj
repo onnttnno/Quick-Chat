@@ -12,7 +12,6 @@
 		224834B11DB539A50019153C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224834B01DB539A50019153C /* User.swift */; };
 		224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224AFA9C1D867DE7004E7CCD /* Main.storyboard */; };
 		224AFAA91D86890A004E7CCD /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224AFAA81D86890A004E7CCD /* WelcomeVC.swift */; };
-		226EFFA11E1BBBCA00B1D185 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226EFFA01E1BBBCA00B1D185 /* MapKit.framework */; };
 		2274709E1DCCF9BF00645401 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274709D1DCCF9BF00645401 /* LandingVC.swift */; };
 		2284BC451DC3582F00E36E8A /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284BC441DC3582F00E36E8A /* ChatVC.swift */; };
 		22873DAA1DC790550021690E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873DA91DC790550021690E /* Message.swift */; };
@@ -22,8 +21,96 @@
 		22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B974BF1DE9B5DF00E09490 /* Conversation.swift */; };
 		22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22EA578E1E1D28DD0008FFB2 /* newMessage.wav */; };
 		22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA57901E1D32520008FFB2 /* VCCells.swift */; };
-		62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */; };
+		BF5A58885FEABAF604CA46D4 /* libPods-QuickChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B957EE6E265B6F54F8DA91 /* libPods-QuickChat.a */; };
+		CE40EB9F20A3304E00DDF817 /* libGoogleToolboxForMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE40EB9420A3303800DDF817 /* libGoogleToolboxForMac.a */; };
+		CE40EBA020A3304E00DDF817 /* libGTMSessionFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE40EB9620A3303800DDF817 /* libGTMSessionFetcher.a */; };
+		CE40EBA120A3304E00DDF817 /* libleveldb-library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE40EB9820A3303800DDF817 /* libleveldb-library.a */; };
+		CE40EBA320A3304E00DDF817 /* libPods-QuickChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE40EB9C20A3303800DDF817 /* libPods-QuickChat.a */; };
+		CE40EBA420A3304E00DDF817 /* libSwiftyRSA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE40EB9E20A3303800DDF817 /* libSwiftyRSA.a */; };
+		CE40EBA920A331EC00DDF817 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226EFFA01E1BBBCA00B1D185 /* MapKit.framework */; };
+		CE5CCB9820A7099500D335C0 /* forge.min.js in Resources */ = {isa = PBXBuildFile; fileRef = CE5CCB8D20A7099500D335C0 /* forge.min.js */; };
+		CE5CCB9A20A782FC00D335C0 /* service.js in Resources */ = {isa = PBXBuildFile; fileRef = CE5CCB9920A782FC00D335C0 /* service.js */; };
+		CE5CCB9C20A7831A00D335C0 /* axios.min.js in Resources */ = {isa = PBXBuildFile; fileRef = CE5CCB9B20A7831A00D335C0 /* axios.min.js */; };
+		CE5EF52620A81FBF00D67728 /* node-jose.js in Resources */ = {isa = PBXBuildFile; fileRef = CE5EF51B20A81FBF00D67728 /* node-jose.js */; };
+		CE5F324A20A32967005E8F5E /* private.pem in Resources */ = {isa = PBXBuildFile; fileRef = CE5F324920A32966005E8F5E /* private.pem */; };
+		CE5F324C20A32970005E8F5E /* public.pem in Resources */ = {isa = PBXBuildFile; fileRef = CE5F324B20A32970005E8F5E /* public.pem */; };
+		CE84A92A20A61C990096BEAF /* libCryptoSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE84A92920A61C990096BEAF /* libCryptoSwift.a */; };
+		CEE446C9205FB34E0083DEB9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE446C8205FB34E0083DEB9 /* Service.swift */; };
+		CEED946820BBF311006D2ACC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEED946720BBF311006D2ACC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE40EB9320A3303800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D9B43D56961C40FBD8DFEE8A4F3DB98;
+			remoteInfo = GoogleToolboxForMac;
+		};
+		CE40EB9520A3303800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9814C08496DC5C8EAFEE1AEAA7D7F71B;
+			remoteInfo = GTMSessionFetcher;
+		};
+		CE40EB9720A3303800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4761C20945EAD3AFE0585340A87613A7;
+			remoteInfo = "leveldb-library";
+		};
+		CE40EB9B20A3303800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A2E980273F1C5BA800267595449F2CD;
+			remoteInfo = "Pods-QuickChat";
+		};
+		CE40EB9D20A3303800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0975B5A20E47AE4E1E2B298961C60D03;
+			remoteInfo = SwiftyRSA;
+		};
+		CE40EBB520A3394800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE9F755EA2D5C588331F737B32DC1376;
+			remoteInfo = FirebaseAuth;
+		};
+		CE40EBB720A3394800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C5E3575D98B0EA16B4D0FDF287E92C6F;
+			remoteInfo = FirebaseCore;
+		};
+		CE40EBB920A3394800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 765AA91FD95F6AF4A39928A2B4B6F6AA;
+			remoteInfo = FirebaseDatabase;
+		};
+		CE40EBBB20A3394800DDF817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D170F18F27E308BF04E7B0BC1E4CC06;
+			remoteInfo = FirebaseStorage;
+		};
+		CE84A92820A61C990096BEAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 712E09AF76D0373B5E3B10441E84B505;
+			remoteInfo = CryptoSwift;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		220698831E066E4900F2284B /* Helper Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Helper Files.swift"; path = "Helper files/Helper Files.swift"; sourceTree = "<group>"; };
@@ -43,9 +130,19 @@
 		22B974BF1DE9B5DF00E09490 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = QuickChat/Model/Conversation.swift; sourceTree = "<group>"; };
 		22EA578E1E1D28DD0008FFB2 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		22EA57901E1D32520008FFB2 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCCells.swift; path = QuickChat/ViewControllers/VCCells.swift; sourceTree = "<group>"; };
+		24B957EE6E265B6F54F8DA91 /* libPods-QuickChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuickChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		614F8B4888358059B3DC166B /* Pods-QuickChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.debug.xcconfig"; sourceTree = "<group>"; };
-		B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FBFCFF82B6EB57B02FA375 /* Pods-QuickChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.release.xcconfig"; sourceTree = "<group>"; };
+		CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		CE5B0E32209D088400BF66BF /* QuickChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickChat.entitlements; sourceTree = "<group>"; };
+		CE5CCB8D20A7099500D335C0 /* forge.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = forge.min.js; path = "pJlib 2/forge.min.js"; sourceTree = "<group>"; };
+		CE5CCB9920A782FC00D335C0 /* service.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = service.js; sourceTree = "<group>"; };
+		CE5CCB9B20A7831A00D335C0 /* axios.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = axios.min.js; path = "pJlib 2/axios.min.js"; sourceTree = "<group>"; };
+		CE5EF51B20A81FBF00D67728 /* node-jose.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "node-jose.js"; path = "services/bower_components/node-jose-browserified/dist/node-jose.js"; sourceTree = SOURCE_ROOT; };
+		CE5F324920A32966005E8F5E /* private.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = private.pem; sourceTree = "<group>"; };
+		CE5F324B20A32970005E8F5E /* public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public.pem; sourceTree = "<group>"; };
+		CEE446C8205FB34E0083DEB9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CEED946720BBF311006D2ACC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +150,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				226EFFA11E1BBBCA00B1D185 /* MapKit.framework in Frameworks */,
-				62058F6006BD9ACBE0439C4B /* Pods_QuickChat.framework in Frameworks */,
+				CE84A92A20A61C990096BEAF /* libCryptoSwift.a in Frameworks */,
+				CE40EB9F20A3304E00DDF817 /* libGoogleToolboxForMac.a in Frameworks */,
+				CE40EBA020A3304E00DDF817 /* libGTMSessionFetcher.a in Frameworks */,
+				CE40EBA120A3304E00DDF817 /* libleveldb-library.a in Frameworks */,
+				CE40EBA920A331EC00DDF817 /* MapKit.framework in Frameworks */,
+				CE40EBA320A3304E00DDF817 /* libPods-QuickChat.a in Frameworks */,
+				CE40EBA420A3304E00DDF817 /* libSwiftyRSA.a in Frameworks */,
+				BF5A58885FEABAF604CA46D4 /* libPods-QuickChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +170,7 @@
 				224834B01DB539A50019153C /* User.swift */,
 				22873DA91DC790550021690E /* Message.swift */,
 				22B974BF1DE9B5DF00E09490 /* Conversation.swift */,
+				CEE446C8205FB34E0083DEB9 /* Service.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -115,8 +219,16 @@
 		22A92BAF1D59EBD6005D76F7 /* QuickChat */ = {
 			isa = PBXGroup;
 			children = (
+				CEED946720BBF311006D2ACC /* GoogleService-Info.plist */,
+				CE5B0E32209D088400BF66BF /* QuickChat.entitlements */,
 				22A92BB01D59EBD6005D76F7 /* AppDelegate.swift */,
 				224AFA9C1D867DE7004E7CCD /* Main.storyboard */,
+				CE5F324B20A32970005E8F5E /* public.pem */,
+				CE5F324920A32966005E8F5E /* private.pem */,
+				CE5CCB9920A782FC00D335C0 /* service.js */,
+				CE5CCB9B20A7831A00D335C0 /* axios.min.js */,
+				CE5CCB8D20A7099500D335C0 /* forge.min.js */,
+				CE5EF51B20A81FBF00D67728 /* node-jose.js */,
 				224AFA9E1D868371004E7CCD /* ViewControllers */,
 				224834AF1DB539690019153C /* Model */,
 				224AFAAA1D86900B004E7CCD /* Helper Files */,
@@ -130,8 +242,9 @@
 		5923406597F4A9DB000B8FF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */,
 				226EFFA01E1BBBCA00B1D185 /* MapKit.framework */,
-				B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */,
+				24B957EE6E265B6F54F8DA91 /* libPods-QuickChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,6 +258,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE40EB8B20A3303800DDF817 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE84A92920A61C990096BEAF /* libCryptoSwift.a */,
+				CE40EBB620A3394800DDF817 /* libFirebaseAuth.a */,
+				CE40EBB820A3394800DDF817 /* libFirebaseCore.a */,
+				CE40EBBA20A3394800DDF817 /* libFirebaseDatabase.a */,
+				CE40EBBC20A3394800DDF817 /* libFirebaseStorage.a */,
+				CE40EB9420A3303800DDF817 /* libGoogleToolboxForMac.a */,
+				CE40EB9620A3303800DDF817 /* libGTMSessionFetcher.a */,
+				CE40EB9820A3303800DDF817 /* libleveldb-library.a */,
+				CE40EB9C20A3303800DDF817 /* libPods-QuickChat.a */,
+				CE40EB9E20A3303800DDF817 /* libSwiftyRSA.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,8 +286,6 @@
 				22A92BA91D59EBD5005D76F7 /* Sources */,
 				22A92BAA1D59EBD5005D76F7 /* Frameworks */,
 				22A92BAB1D59EBD5005D76F7 /* Resources */,
-				62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */,
-				59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,10 +308,14 @@
 				TargetAttributes = {
 					22A92BAC1D59EBD5005D76F7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = SANDF5ZLFS;
 						DevelopmentTeamName = "Haik Aslanyan (Personal Team)";
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 0;
 							};
@@ -205,6 +337,12 @@
 			mainGroup = 22A92BA41D59EBD5005D76F7;
 			productRefGroup = 22A92BAE1D59EBD6005D76F7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CE40EB8B20A3303800DDF817 /* Products */;
+					ProjectRef = CE40EB8A20A3303800DDF817 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				22A92BAC1D59EBD5005D76F7 /* QuickChat */,
@@ -212,14 +350,94 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		CE40EB9420A3303800DDF817 /* libGoogleToolboxForMac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGoogleToolboxForMac.a;
+			remoteRef = CE40EB9320A3303800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EB9620A3303800DDF817 /* libGTMSessionFetcher.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGTMSessionFetcher.a;
+			remoteRef = CE40EB9520A3303800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EB9820A3303800DDF817 /* libleveldb-library.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libleveldb-library.a";
+			remoteRef = CE40EB9720A3303800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EB9C20A3303800DDF817 /* libPods-QuickChat.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-QuickChat.a";
+			remoteRef = CE40EB9B20A3303800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EB9E20A3303800DDF817 /* libSwiftyRSA.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSwiftyRSA.a;
+			remoteRef = CE40EB9D20A3303800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EBB620A3394800DDF817 /* libFirebaseAuth.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirebaseAuth.a;
+			remoteRef = CE40EBB520A3394800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EBB820A3394800DDF817 /* libFirebaseCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirebaseCore.a;
+			remoteRef = CE40EBB720A3394800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EBBA20A3394800DDF817 /* libFirebaseDatabase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirebaseDatabase.a;
+			remoteRef = CE40EBB920A3394800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE40EBBC20A3394800DDF817 /* libFirebaseStorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFirebaseStorage.a;
+			remoteRef = CE40EBBB20A3394800DDF817 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE84A92920A61C990096BEAF /* libCryptoSwift.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCryptoSwift.a;
+			remoteRef = CE84A92820A61C990096BEAF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		22A92BAB1D59EBD5005D76F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				22A92BB81D59EBD6005D76F7 /* Assets.xcassets in Resources */,
+				CE5F324A20A32967005E8F5E /* private.pem in Resources */,
 				22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */,
+				CE5CCB9820A7099500D335C0 /* forge.min.js in Resources */,
+				CE5F324C20A32970005E8F5E /* public.pem in Resources */,
+				CE5CCB9C20A7831A00D335C0 /* axios.min.js in Resources */,
+				CE5CCB9A20A782FC00D335C0 /* service.js in Resources */,
+				CEED946820BBF311006D2ACC /* GoogleService-Info.plist in Resources */,
 				224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */,
+				CE5EF52620A81FBF00D67728 /* node-jose.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,45 +462,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -295,6 +474,7 @@
 				22A5FC5F1DEB185B00624E2B /* NavVC.swift in Sources */,
 				22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */,
 				2217853D1DCD1DAC00A69F88 /* ConversationsVC.swift in Sources */,
+				CEE446C9205FB34E0083DEB9 /* Service.swift in Sources */,
 				22A92BB11D59EBD6005D76F7 /* AppDelegate.swift in Sources */,
 				224AFAA91D86890A004E7CCD /* WelcomeVC.swift in Sources */,
 				220698841E066E4900F2284B /* Helper Files.swift in Sources */,
@@ -416,11 +596,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = QuickChat/QuickChat.entitlements;
+				DEVELOPMENT_TEAM = SANDF5ZLFS;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/SwiftyRSA\"/**",
+				);
 				INFOPLIST_FILE = QuickChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.YourIdentifier.QuickChat;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = th.ac.tu.engr.tupine.QuickChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -433,11 +631,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = QuickChat/QuickChat.entitlements;
+				DEVELOPMENT_TEAM = SANDF5ZLFS;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/SwiftyRSA\"/**",
+				);
 				INFOPLIST_FILE = QuickChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.YourIdentifier.QuickChat;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = th.ac.tu.engr.tupine.QuickChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

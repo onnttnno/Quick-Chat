@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Chart Example</title>
+	<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+
+	<link href="http://110.164.179.154/node/fintechShare/public/amcharts/style.css" rel="stylesheet" type="text/css">
+	<!--<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />-->
+
+	<link type="text/css" href="http://110.164.179.154/node/fintechShare/public/amcharts/plugins/export/export.css" rel="stylesheet">
+
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/amcharts.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/serial.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/amstock.js" type="text/javascript"></script>
+
+	<!-- export static image -->
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/plugins/export/export.min.js"></script>
+	<!--<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>	-->
+
+	<!-- theme-->
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/themes/light.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/themes/dark.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/themes/black.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/themes/chalk.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/themes/patterns.js" type="text/javascript"></script>
+
+	<!--Loading external libraries needed for operation of this plugin-->
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/plugins/export/libs/fabric.js/fabric.min.js" type="text/javascript"></script>
+	<script src="http://110.164.179.154/node/fintechShare/public/amcharts/plugins/export/libs/FileSaver.js/FileSaver.min.js"
+	    type="text/javascript"></script>
+
+	<script>
+		var file;
+		var chartData;
+		var img;
+		var ticker;
+		var chart;
+		function getDataPointsFromJSON() {
+			/*var firstDate = new Date();
+				firstDate.setHours(0, 0, 0, 0);
+                firstDate.setDate(firstDate.getDate() - 2000);*/
+			for (var i = 0; i < file.length; i++) {
+				var datastring = file[i].Date;
+				var newDate = new Date(
+					parseInt(datastring.split("-")[0]),
+					parseInt(datastring.split("-")[1]),
+					parseInt(datastring.split("-")[2])
+				);
+				/*var datastring =  file[i].Date+"";
+                    var year = datastring.substring(0,4);
+                    var month = datastring.substring(4,6);
+                    var day = datastring.substring(6,8);
+                    var newDate = new Date(year, month-1, day);
+                 
+					/*var newDate = new Date(firstDate);
+					newDate.setDate(newDate.getDate() + i);
+					var open = Math.round(Math.random() * (30) + 100);
+					var close = open + Math.round(Math.random() * (15) - Math.random() * 10);
+					var low;
+					if (open < close) {
+						low = open - Math.round(Math.random() * 5);
+					} else {
+						low = close - Math.round(Math.random() * 5);
+					}
+					var high;
+					if (open < close) {
+						high = close + Math.round(Math.random() * 5);
+					} else {
+						high = open + Math.round(Math.random() * 5);
+					}
+					var volume = Math.round(Math.random() * (1000 + i)) + 100 + i;*/
+				var value = Math.round(Math.random() * (30) + 100);
+				chartData[i] = ({
+					date: newDate,
+					open: parseFloat(file[i].Open),
+					close: parseFloat(file[i].Close),
+					high: parseFloat(file[i].Heigh),
+					low: parseFloat(file[i].Low),
+					volume: file[i].Volume,
+					value: value
+				});
+			}
+		}
+		function makeChart(theme, bgColor, bgImage) {
+			if (chart) {
+				chart.clear();
+			}
+			// background
+			if (document.body) {
+				document.body.style.backgroundColor = bgColor;
+				document.body.style.backgroundImage = "url(" + bgImage + ")";
+			}
+			chart = AmCharts.makeChart("chartdiv", {
+				type: "stock",
+				theme: theme,
+				dataSets: [{
+					fieldMappings: [{
+						fromField: "open",
+						toField: "open"
+					}, {
+						fromField: "close",
+						toField: "close"
+					}, {
+						fromField: "high",
+						toField: "high"
+					}, {
+						fromField: "low",
+						toField: "low"
+					}, {
+						fromField: "volume",
+						toField: "volume"
+					}, {
+						fromField: "value",
+						toField: "value"
+					}],
+					color: "#7f8da9",
+					dataProvider: chartData,
+					title: "West Stock",
+					categoryField: "date"
+				}, {
+					fieldMappings: [{
+						fromField: "value",
+						toField: "value"
+					}],
+					color: "#fac314",
+					dataProvider: chartData,
+					compared: true,
+					title: "East Stock",
+					categoryField: "date"
+				}],
+				panels: [{
+						title: "Valueeeeee",
+						showCategoryAxis: false,
+						percentHeight: 70,
+						valueAxes: [{
+							id: "v1",
+							dashLength: 5
+						}],
+						categoryAxis: {
+							dashLength: 5
+						},
+						stockGraphs: [{
+							type: "candlestick",
+							id: "g1",
+							openField: "open",
+							closeField: "close",
+							highField: "high",
+							lowField: "low",
+							valueField: "close",
+							lineColor: "#7f8da9",
+							fillColors: "#7f8da9",
+							negativeLineColor: "#db4c3c",
+							negativeFillColors: "#db4c3c",
+							fillAlphas: 1,
+							useDataSetColors: false,
+							/*comparable: true,
+							/*compareField: "value",*/
+							balloonText: "Open:<b>[[open]]</b> <br>Low:<b>[[low]]</b> <br>High:<b>[[high]]</b> <br>Close:<b>[[close]]</b><br>",
+						}],
+						stockLegend: {
+							valueTextRegular: undefined,
+							periodValueTextComparing: "[[percents.value.close]]%"
+						}
+					},
+					{
+						title: "Volumeeee",
+						percentHeight: 30,
+						marginTop: 1,
+						showCategoryAxis: true,
+						valueAxes: [{
+							id: "v2",
+							dashLength: 5
+						}],
+						categoryAxis: {
+							dashLength: 5
+						},
+						stockGraphs: [{
+							valueField: "volume",
+							type: "column",
+							showBalloon: false,
+							fillAlphas: 1
+						}],
+						stockLegend: {
+							markerType: "none",
+							markerSize: 0,
+							labelText: "",
+							periodValueTextRegular: "[[value.close]]"
+						}
+					}
+				],
+				chartCursorSettings: {
+					valueLineEnabled: true,
+					valueLineBalloonEnabled: true,
+					valueBalloonsEnabled: true
+				},
+				chartScrollbarSettings: {
+					graph: "g1",
+					graphType: "line",
+					usePeriod: "WW",
+					updateOnReleaseOnly: false
+				},
+				periodSelector: {
+					position: "bottom",
+					periods: [{
+						period: "DD",
+						count: 10,
+						label: "10 days"
+					}, {
+						period: "MM",
+						selected: true,
+						count: 1,
+						label: "1 month"
+					}, {
+						period: "YYYY",
+						count: 1,
+						label: "1 year"
+					}, {
+						period: "YTD",
+						label: "YTD"
+					}, {
+						period: "MAX",
+						label: "MAX"
+					}]
+				},
+				"export": {
+					"enabled": true,
+					"libs": {
+						"autoLoad": false
+					},
+					menu: [{
+						class: "export-main",
+						//icon: '/export.png',
+						format: 'png',
+						//label: "SAVE",
+						click: function () {
+							this.capture({}, function () {
+								this.toJPG({}, function (data) {
+									//document.getElementById("result").innerHTML = data;
+									this.download(data, "image/jpg", "amCharts.jpg");
+									img = data;
+									myFunction(img, ticker);
+								});
+							});
+							/* CALL external function() to save Start-End Date from scal*/
+							//myFunction({});
+						}
+					}]
+				}
+				/*chart.exportConfig = {
+					menuItems: [{
+						icon: 'amcharts/images/export.png',
+						format: 'png',
+						onclick: function(a) {
+							var output = a.output({
+								format: 'png',
+								output: 'datastring'
+							}, function(data) {
+								console.log(data)
+							});
+						}
+					}]
+				}*/
+			})
+		};
+		window.onload = function () {
+			file = [<%- items %>];
+			chartData = [];
+			ticker = file[0].Ticker;
+			document.getElementById("nameOfticker").innerHTML = ticker;
+			//persist data 
+			//var persistData = new Promise();
+			getDataPointsFromJSON(file);
+			//generateChartData();
+			makeChart("light", "#FFFFFF");
+		}
+	</script>
+
+	<!--<script> POST METHOD FOR SAVE DATA TO MONGODB 
+			var myData = [<%- items %>]
+		
+			function sendJSON(){
+			
+			var xmlhttp = new XMLHttpRequest(); 
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("result").innerHTML =
+					this.responseText;
+				}
+				};
+			xmlhttp.open("POST", "http://localhost:3000/ptt");
+			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xmlhttp.send(JSON.stringify(myData));
+			
+			}
+		</script>-->
+
+	<script>
+		function myFunction(img, ticker) {
+			var startDateInput;
+			var endDateInput;
+			startDateInput = document.querySelector('.amcharts-start-date-input').value;
+			endDateInput = document.querySelector('.amcharts-end-date-input').value;
+			//document.getElementById("resultStartDate").innerHTML = typeof startDateInput;
+			//document.getElementById("resultEndtDate").innerHTML = endDateInput;
+			formData = {
+				ticker,
+				startDateInput,
+				endDateInput,
+				img
+			};
+			var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+			xmlhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					//document.getElementById("result").innerHTML =
+					//"Successfully Saved";
+				}
+			};
+			xmlhttp.onload = function () {
+				if (xmlhttp.readyState === xmlhttp.DONE) {
+					if (xmlhttp.status === 200) {
+						alert('save complete : '+xhr.response);
+					}
+				}
+			};
+			xmlhttp.open("POST", "http://110.164.179.154/node/fintechShare/secure/" + ticker);
+			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xmlhttp.send(JSON.stringify(formData));
+		};
+	</script>
+
+
+
+</head>
+
+<body style="background-color:#FFFFFF">
+
+	<div>
+		<p id="nameOfticker"> </p>
+		Select theme:
+
+		<a href="#" onclick="makeChart('light', '#ffffff');">Light</a> |
+		<a href="#" onclick="makeChart('dark', '#282828')">Dark</a> |
+		<a href="#" onclick="makeChart('black', '#222222')">Black</a> |
+		<a href="#" onclick="makeChart('patterns', '#FFFFFF')">Patterns</a> |
+		<a href="#" onclick="makeChart('chalk', '#282828', 'images/board.jpg')">Chalk</a>
+	</div>
+
+	<div id="chartdiv" style="width:100%; height:600px;"></div>
+
+	<!-- btn SEND have onClick=> sendJSON() function , this function is receive JSON file from Back-end -->
+	<!--<div>
+			 <h1>Send JSON to Node</h1>
+			 <button onClick="sendJSON()">Send</button>
+			 <p id ="result">
+			 </p>
+		</div>-->
+
+	<!-- this from is test to send data from input to back-end (post method) [T1] -->
+	<!--<form method="post" action="/addname">
+			<label>Enter Your Name<label><br>
+			<input type="text" name="Date" placeholder="Enter first name..." required>
+			<p id="itemPTT"><%- items %></p>
+			<input type="submit" value="Add Name">
+		</form>-->
+
+	<!-- btn SAVE , text START/END date get data from <input> external <script amchart> -->
+	<!--<div class="example">
+				<button onclick="myFunction()">SAVE</button><br>
+				<p id="result"> </p>
+				Start Date :<p id="resultStartDate"> </p>
+				End Date :<p id="resultEndtDate"> </p>
+		</div>-->
+
+</body>
+
+</html>

@@ -54,6 +54,8 @@ class Message {
                                 type = .photo
                                 case "location":
                                 type = .location
+                                case "secureURL":
+                                type = .secureURL
                             default: break
                             }
                             let content = receivedMessage["content"] as! String
@@ -153,17 +155,28 @@ class Message {
             case .photo:
                 let imageData = UIImageJPEGRepresentation((message.content as! UIImage), 0.5)
                 let child = UUID().uuidString
-                Storage.storage().reference().child("messagePics").child(child).putData(imageData!, metadata: nil, completion: { (metadata, error) in
+                var storageRef = Storage.storage().reference().child("messagePics").child(child)
+                    storageRef.putData(imageData!, metadata: nil, completion: { (metadata, error) in
                     if error == nil {
-                        let path = metadata?.downloadURL()?.absoluteString
-                        let values = ["type": "photo", "content": path!, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false] as [String : Any]
+                        storageRef.downloadURL(completion: {(url,error) in  guard let downloadURL = url else {
+                            // Uh-oh, an error occurred!
+                            return
+                            }
+                            let values = ["type": "photo", "content": downloadURL.absoluteString, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false] as [String : Any]
                         Message.uploadMessage(withValues: values, toID: toID, completion: { (status) in
                             completion(status)
+                        })
                         })
                     }
                 })
             case .text:
                 let values = ["type": "text", "content": message.content, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false]
+                Message.uploadMessage(withValues: values, toID: toID, completion: { (status) in
+                    completion(status)
+                })
+            case .secureURL:
+                //will be do later
+                let values = ["type": "secureURL", "content": message.content, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false]
                 Message.uploadMessage(withValues: values, toID: toID, completion: { (status) in
                     completion(status)
                 })

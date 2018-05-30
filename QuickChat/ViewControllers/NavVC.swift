@@ -24,7 +24,7 @@
 import UIKit
 import Firebase
 import MapKit
-
+import WebKit
 class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
     //MARK: Properties
@@ -32,17 +32,18 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     @IBOutlet var profileView: UIView!
     @IBOutlet var previewView: UIView!
     @IBOutlet var mapPreviewView: UIView!
+    @IBOutlet var chartPreviewView: UIView!
     @IBOutlet weak var mapVIew: MKMapView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profilePicView: RoundedImageView!
+    @IBOutlet weak var candleChart: UIWebView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     var topAnchorContraint: NSLayoutConstraint!
     let darkView = UIView.init()
     var items = [User]()
-    
     //MARK: Methods
     func customization() {
         //DarkView customization
@@ -107,11 +108,20 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
         self.mapPreviewView.topAnchor.constraint(equalTo: extraViewsContainer.topAnchor).isActive = true
         self.mapPreviewView.trailingAnchor.constraint(equalTo: extraViewsContainer.trailingAnchor).isActive = true
         self.mapPreviewView.bottomAnchor.constraint(equalTo: extraViewsContainer.bottomAnchor).isActive = true
+
+        //Service.sharedInstance.handshake(api: "testAPI",token: "testTokens")
+        //web view
+        extraViewsContainer.addSubview(self.chartPreviewView)
+        self.chartPreviewView.isHidden = true
+        self.chartPreviewView.translatesAutoresizingMaskIntoConstraints = false
+        self.chartPreviewView.leadingAnchor.constraint(equalTo: extraViewsContainer.leadingAnchor).isActive = true
+        self.chartPreviewView.topAnchor.constraint(equalTo: extraViewsContainer.topAnchor).isActive = true
+        self.chartPreviewView.trailingAnchor.constraint(equalTo: extraViewsContainer.trailingAnchor).isActive = true
+        self.chartPreviewView.bottomAnchor.constraint(equalTo: extraViewsContainer.bottomAnchor).isActive = true
         //NotificationCenter for showing extra views
         NotificationCenter.default.addObserver(self, selector: #selector(self.showExtraViews(notification:)), name: NSNotification.Name(rawValue: "showExtraView"), object: nil)
         self.fetchUsers()
         self.fetchUserInfo()
-
     }
     
     //Hide Extra views
@@ -127,6 +137,7 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
             self.contactsView.isHidden = true
             self.previewView.isHidden = true
             self.mapPreviewView.isHidden = true
+            self.chartPreviewView.isHidden = true
             self.mapVIew.removeAnnotations(self.mapVIew.annotations)
             let vc = self.viewControllers.last
             vc?.inputAccessoryView?.isHidden = false
@@ -164,6 +175,28 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
                 annotation.coordinate = coordinate!
                 self.mapVIew.addAnnotation(annotation)
                 self.mapVIew.showAnnotations(self.mapVIew.annotations, animated: false)
+            case .secureURl:
+                //show previews
+                self.chartPreviewView.isHidden = false
+                let url = notification.userInfo?["secureURL"] as? String
+        
+                Service.sharedInstance.load(triket: url!){ responseString, error in
+                    guard let responseString = responseString, error == nil else {
+                        print(error ?? "Unknown error")
+                        return
+                    }
+                    
+                    self.candleChart.loadHTMLString(responseString, baseURL: nil)
+                }
+                
+
+                
+                //let res = Service.sharedInstance.load(triket: url!)
+                //print(res)
+                //let SharedDefaults = UserDefaults.init(suiteName: "group.com.service")!
+                //let myString = SharedDefaults.string(forKey: "chart")
+                //candleChart.loadHTMLString(myString!, baseURL: nil)
+                
             }
         }
     }
@@ -294,7 +327,10 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         self.view.transform = CGAffineTransform.identity
-    }    
+    }
+    
+
+    
 }
 
 

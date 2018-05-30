@@ -37,19 +37,23 @@ class User: NSObject {
     class func registerUser(withName: String, email: String, password: String, profilePic: UIImage, completion: @escaping (Bool) -> Swift.Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
-                user?.sendEmailVerification(completion: nil)
-                let storageRef = Storage.storage().reference().child("usersProfilePics").child(user!.uid)
+                user?.user.sendEmailVerification(completion: nil)
+                let storageRef = Storage.storage().reference().child("usersProfilePics").child(user!.user.uid)
                 let imageData = UIImageJPEGRepresentation(profilePic, 0.1)
                 storageRef.putData(imageData!, metadata: nil, completion: { (metadata, err) in
                     if err == nil {
-                        let path = metadata?.downloadURL()?.absoluteString
-                        let values = ["name": withName, "email": email, "profilePicLink": path!]
-                        Database.database().reference().child("users").child((user?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
+                        storageRef.downloadURL(completion: {(url,error) in  guard let downloadURL = url else {
+                            // Uh-oh, an error occurred!
+                            return
+                            }
+                            let values = ["name": withName, "email": email, "profilePicLink": downloadURL.absoluteString] as [String : Any]
+                            Database.database().reference().child("users").child((user?.user.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
                             if errr == nil {
                                 let userInfo = ["email" : email, "password" : password]
                                 UserDefaults.standard.set(userInfo, forKey: "userInformation")
                                 completion(true)
                             }
+                        })
                         })
                     }
                 })
@@ -61,7 +65,7 @@ class User: NSObject {
     }
     
    class func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
-        Auth.auth().signIn(withEmail: withEmail, password: password, completion: { (user, error) in
+    Auth.auth().signIn(withEmail: withEmail, password: password, completion: { (user, error) in
             if error == nil {
                 let userInfo = ["email": withEmail, "password": password]
                 UserDefaults.standard.set(userInfo, forKey: "userInformation")
@@ -83,7 +87,7 @@ class User: NSObject {
     }
     
    class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
-        Database.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+    Database.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
                 let email = data["email"]!

@@ -22,7 +22,7 @@
 
 
 import UIKit
-
+import JavaScriptCore
 
 class LandingVC: UIViewController {
     
@@ -35,6 +35,16 @@ class LandingVC: UIViewController {
 
     //MARK: Push to relevant ViewController
     func pushTo(viewController: ViewControllerType)  {
+
+        //Service();
+       //Service.sharedInstance.handshake(api: "testAPI", token: "testToken")
+        //hand shake
+        do{
+            let x = try Service.sharedInstance
+            print(x)
+        }catch{
+            print(error.localizedDescription)
+        }
         switch viewController {
         case .conversations:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as! NavVC

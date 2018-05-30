@@ -179,6 +179,12 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             }
         }
     }
+    
+    //Secure URL evnet (send)
+    @IBAction func selectSecureUrl(_ sender: Any){
+            // input dialog
+        self.showInputDialog()
+    }
 
     //MARK: Delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,7 +199,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             })
         }
     }
-    
+    // UI chat history
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.items[indexPath.row].owner {
         case .receiver:
@@ -218,6 +224,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 }
             case .location:
                 cell.messageBackground.image = UIImage.init(named: "location")
+                cell.message.isHidden = true
+            case .secureURL:
+                cell.message.text = self.items[indexPath.row].content as! String
+                cell.messageBackground.image = UIImage.init(named: "default-secure")
                 cell.message.isHidden = true
             }
             return cell
@@ -245,6 +255,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             case .location:
                 cell.messageBackground.image = UIImage.init(named: "location")
                 cell.message.isHidden = true
+            case .secureURL:
+                cell.message.text = self.items[indexPath.row].content as! String
+                cell.messageBackground.image = UIImage.init(named: "default-secure-2")
+                cell.message.isHidden = true
             }
             return cell
         }
@@ -264,6 +278,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(coordinates[0])!, longitude: CLLocationDegrees(coordinates[1])!)
             let info = ["viewType" : ShowExtraView.map, "location": location] as [String : Any]
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
+            self.inputAccessoryView?.isHidden = true
+            
+        case .secureURL:
+            let url = (self.items[indexPath.row].content as! String)
+            let info = ["viewType" : ShowExtraView.secureURl, "secureURL": url] as [String : Any]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
+           // let rand = randomString(length: 20)
+            /*do{
+                try Service.sharedInstance.load(triket: url,chanel: "chart")
+                let SharedDefaults = UserDefaults.init(suiteName: "group.com.service")!
+                let myString = SharedDefaults.string(forKey: "chart")
+            }catch{
+                print("error")
+            }*/
+        
             self.inputAccessoryView?.isHidden = true
         default: break
         }
@@ -310,11 +339,62 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         NotificationCenter.default.removeObserver(self)
         Message.markMessagesRead(forUserID: self.currentUser!.id)
     }
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customization()
         self.fetchData()
+    }
+    
+    //input dialog
+    
+    func showInputDialog() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Secure Link", message: "Enter Secure linke", preferredStyle: .alert)
+        
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+            
+            //getting the input values from user
+            let securUrl = alertController.textFields?[0].text
+            self.composeMessage(type: .secureURL, content: securUrl!)
+            //self.labelMessage.text = "Name: " + name! + "Email: " + email!
+            
+        }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        //adding textfields to our dialog box
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Url"
+        }
+        
+        //adding the action to dialogbox
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
 }
 

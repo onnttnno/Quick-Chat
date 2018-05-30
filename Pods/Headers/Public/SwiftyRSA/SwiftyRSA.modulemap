@@ -1,0 +1,6 @@
+module SwiftyRSA [system] {
+  umbrella header "SwiftyRSA-umbrella.h"
+
+  export *
+  module * { export * }
+}
